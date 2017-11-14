@@ -1,0 +1,17 @@
+*.lock
+nohup.out
+*.php~
+*.old
+.idea
+**/node_modules
+.DS_Store
+*.TMP
+.buildpath
+.project
+.settings.idea
+deploy.sh
+.happypack
+src/directives/main.js
+src/filters/main.js
+src/utils/main.js
+dll/**/*

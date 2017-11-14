@@ -1,0 +1,234 @@
+//mixin
+@import "./mixins/mixin-bg-image.less";
+@import "./mixins/mixin-break.less";
+@import "./mixins/mixin-clearfix.less";
+@import "./mixins/mixin-ellipsis-mutiple-line.less";
+@import "./mixins/mixin-ellipsis-single-line.less";
+@import "./mixins/mixin-expand-click-area.less";
+@import "./mixins/mixin-fullscreen.less";
+@import "./mixins/mixin-gradient.less";
+@import "./mixins/mixin-hairline.less";
+@import "./mixins/mixin-hyphens.less";
+@import "./mixins/mixin-icon-arrow.less";
+@import "./mixins/mixin-set-tap-color.less";
+@import "./mixins/mixin-user-select.less";
+
+//variable
+@import "./variables/variable-color.less";
+@import "./variables/variable-font.less";
+// @import "./variables/variable-icon.less";
+@import "./variables/variable-radius.less";
+@import "./variables/variable-shadow.less";
+@import "./variables/variable-size.less";
+
+@import "./variables/variable-theme-test.less";
+
+//reset
+@import "./reset/main.less";
+
+//iconfont
+@import "./iconfont/main.less";
+
+//icon
+.enjoy-icon-logo{
+    position: absolute;
+    left: 0;
+    top: 25px;
+    width: 159px;
+    height: 47px;
+    background: url("../../assets/icons/icon-logo.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+.icon-add-success{
+    margin: 0 auto;
+    width: 122px;
+    height: 162px;
+    background: url("../../assets/icons/icon-add-patient-success.png");
+    background-size: 100% 100%;
+}
+
+//btn
+.enjoy-btn-primary, .enjoy-btn-plain{
+    .mixin-user-select();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: @enjoy-height-large-btn;
+    color: @enjoy-color-btn-primary-font;
+    border-radius: @enjoy-radius-large-btn;
+    &.disabled{
+        opacity: .65;
+    }
+}
+.enjoy-btn-primary{
+    margin: 0 auto 15px;
+    width: 100%;
+    height: @enjoy-height-large-btn;
+    .mixin-gradient(@enjoy-color-btn-primary-bg-start, @enjoy-color-btn-primary-bg-end);
+    box-shadow: @enjoy-shadow-large-btn;
+    color: @enjoy-color-btn-primary-font;
+    &:active{
+        background: @enjoy-color-btn-primary-bg-end;
+    }
+}
+.enjoy-btn-plain{
+    color: @enjoy-color-btn-plain-font;
+    background-color: @enjoy-color-btn-plain-bg;
+}
+.theme-test{
+    .enjoy-btn-primary{
+        .mixin-gradient(@enjoy-color-btn-primary-bg-start-test, @enjoy-color-btn-primary-bg-end-test);
+    }
+    .enjoy-btn-plain{
+        color: @enjoy-color-btn-plain-font-test;
+    }
+}
+
+//form
+.enjoy-form-row{
+    position: relative;
+    text-align: left;
+    &:after{
+        .mixin-hairline-bottom();
+    }
+}
+.enjoy-form-label, .enjoy-form-input{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.enjoy-form-label{
+    padding: 24px 0 21px;
+}
+.enjoy-form-label-name{
+    display: block;
+    margin-bottom: 8px;
+}
+.enjoy-form-input{
+    font-size: 14px;
+    color: @enjoy-color-text-gray;
+}
+.enjoy-form-input-half{
+    display: inline-block;
+    width: 50%;
+}
+.enjoy-form-input-wrap{
+    .mixin-clearfix();
+}
+.enjoy-form-footer{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+//modal
+.enjoy-modal {
+    .mixin-fullscreen();
+    z-index: 1000;
+    background: @enjoy-color-modal-mask-bg;
+}
+.enjoy-modal-inner{
+    width: 72%;
+    position: relative;
+    background-color: @enjoy-color-modal-bg;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: @enjoy-radius-modal;
+}
+.enjoy-modal-header{
+    padding: 0 15px;
+}
+.enjoy-modal-body{
+    padding: 15px;
+    font-size: 13px;
+    line-height: 16px;
+    min-height: 32px;
+}
+.enjoy-modal-footer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    height: @enjoy-height-modal-footer;
+    line-height: @enjoy-height-modal-footer;
+    font-size: 17px;
+    &:after{
+        content: '';
+        .mixin-hairline-top();
+    }
+}
+.enjoy-modal-btn{
+    flex: 1;
+    color: @enjoy-color-modal-btn;
+}
+
+//toast
+.enjoy-toast{
+    .mixin-fullscreen();
+    z-index: 1000;
+    background-color: @enjoy-color-toast-mask-bg;
+}
+
+.enjoy-toast-inner{
+    position: absolute;
+    max-width: 60%;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    display: block;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: @enjoy-color-toast-bg;
+    text-align: center;
+    color: @enjoy-color-toast-font;
+    font-size: 14px;
+    word-wrap:break-word;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    line-height: 1.2;
+}
+
+.enjoy-toast-inner-show{
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+.enjoy-toast-inner-hidden{
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+//主题
+.theme-test {
+    .icon-phone:before {
+        color: @enjoy-color-primary-test;
+    }
+
+    .footer-nav-menu-item:first-child {
+        &.active {
+            &:before {
+                color: @enjoy-color-primary-test;
+            }
+        }
+    }
+
+    .footer-nav-menu-item:last-child {
+        &.active {
+            &:before {
+                color: @enjoy-color-primary-test;
+            }
+        }
+    }
+
+    .enjoy-icon-logo{
+        background-image: url("../../assets/icons/qsc-icon-logo.png");
+    }
+    .icon-add-success{
+        background-image: url("../../assets/icons/qsc-icon-add-patient-success.png");
+    }
+    .achievement-inner{
+        background-image: url("../../assets/icons/qsc-icon-achievement-bg.png");
+    }
+}

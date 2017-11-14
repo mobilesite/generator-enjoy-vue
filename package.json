@@ -1,0 +1,23 @@
+{
+  "name": "generator-enjoy-vue",
+  "version": "1.0.0",
+  "description": "An generator of an Vue.js APP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "generator-enjoy-vue",
+    "vue.js",
+    "webapp",
+    "generator",
+    "yeoman-generator"
+  ],
+  "author": "paian<pai_an@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "yeoman-generator": "^2.0.1",
+    "yosay": "^2.0.1"
+  }
+}

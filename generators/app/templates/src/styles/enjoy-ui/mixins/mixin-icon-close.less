@@ -1,0 +1,28 @@
+/**
+ * CSS生成关闭按钮图标
+ * @size        关闭按钮的宽和高
+ * @color       关闭按钮的颜色
+ * @lineWidth   关闭按钮的线条宽度
+ */
+.mixin-icon-close(@size, @color, @lineWidth){
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  color: @color;
+  width: @size;
+  height: @size;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: @size/2 - @lineWidth;
+    width: @size;
+    height: @lineWidth;
+    background-color: @color;
+    transform: rotate(-45deg);
+  }
+  &:after {
+    transform: rotate(45deg);
+  }
+}

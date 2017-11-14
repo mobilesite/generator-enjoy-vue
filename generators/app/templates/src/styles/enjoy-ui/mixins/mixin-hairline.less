@@ -1,0 +1,52 @@
+/**
+* 1像素细线
+*/
+// -------------------------
+.mixin-hairline(){
+    content: " ";
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+}
+
+// 上边线
+.mixin-hairline-top(@color: @enjoy-color-line-light){
+    .mixin-hairline;
+    height: 0;
+    border-top: 1px solid @color;
+}
+
+// 下边线
+.mixin-hairline-bottom(@color: @enjoy-color-line-light){
+    .mixin-hairline;
+    bottom: 0;
+    height: 200%;
+    border-bottom: 1px solid @color;
+}
+
+// 左边线
+.mixin-hairline-left(@color: @enjoy-uiLineColorLight){
+    .mixin-hairline;
+    height: 200%;
+    border-left: 1px solid @color;
+}
+
+// 右边线
+.mixin-hairline-right(@color: @enjoy-color-line-light){
+    .mixin-hairline;
+    height: 200%;
+    border-right: 1px solid @color;
+}
+
+// 四边线
+.mixin-hairline-full(@color: @enjoy-color-line-light){
+    .mixin-hairline;
+    height: 200%;
+    border: 1px solid @color;
+}

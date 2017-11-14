@@ -1,0 +1,13 @@
+/**
+* 仅允许单行，限定最大宽度，溢出时显示省略号
+* @maxWidth  允许的最大宽度：因为必须有width或者max-width属性限制，才会出现单行超出隐藏的效果，而max-width相对于width更灵活(没有固定死宽度)，所以采用max-width
+*/
+
+.mixin-ellipsis-single-line(@maxWidth: none){
+  max-width: @maxWidth;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  word-break: break-all;
+}

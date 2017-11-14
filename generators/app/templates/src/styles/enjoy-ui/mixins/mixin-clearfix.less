@@ -1,0 +1,11 @@
+/**
+* 清除浮动
+*/
+.mixin-clearfix(){
+    clear: both;
+    &:after{
+        display: table; 
+        line-height: 0; 
+        content: "";
+    }
+}

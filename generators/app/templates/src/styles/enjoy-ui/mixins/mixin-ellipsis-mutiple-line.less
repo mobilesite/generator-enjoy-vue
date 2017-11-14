@@ -1,0 +1,12 @@
+/**
+ * 限定最大行数，溢出时显示省略号
+ * @maxLine   允许的最大行数
+ */
+.mixin-ellipsis-multiple-line(@maxLine){
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @maxLine;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}

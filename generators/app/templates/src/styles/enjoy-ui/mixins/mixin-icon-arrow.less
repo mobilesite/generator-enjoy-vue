@@ -1,0 +1,45 @@
+/**
+ * 生成箭头
+ * @direction   箭头朝向
+ * @size        箭头的宽高（宽与高相等）
+ * @color       箭头颜色
+ * @lineWidth   箭头线条宽度
+ */
+
+._add-arrow(@size, @color, @lineWidth){
+  display: inline-block;
+  width: @size;
+  height: @size;
+  border-width: @lineWidth @lineWidth 0 0;
+  border-color: @color;
+  border-style: solid;
+}
+
+.mixin-icon-arrow(@direction, @size, @color, @lineWidth) when (@direction = top) {
+  ._add-arrow(@size, @color, @lineWidth);
+  transform: rotate(-45deg);
+}
+
+.mixin-icon-arrow(@direction, @size, @color, @lineWidth) when (@direction = right) {
+  ._add-arrow(@size, @color, @lineWidth);
+  transform: rotate(45deg);
+
+  position: relative;
+  top: -2px;
+}
+
+.mixin-icon-arrow(@direction, @size, @color,@lineWidth) when (@direction = down) {
+  ._add-arrow(@size, @color, @lineWidth);
+  transform: rotate(135deg);
+
+  position: relative;
+  top: -3px;
+}
+
+.mixin-icon-arrow(@direction, @size, @color, @lineWidth) when (@direction = left) {
+  ._add-arrow(@size, @color, @lineWidth);
+  transform: rotate(-135deg);
+
+  position: relative;
+  top: -2px;
+}

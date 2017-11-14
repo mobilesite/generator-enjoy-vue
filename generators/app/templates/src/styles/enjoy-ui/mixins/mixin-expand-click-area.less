@@ -1,0 +1,15 @@
+/* 
+* 扩大小图标的可点中范围，以便于用户可以比较轻易地点中细小的图标 
+*/
+.mixin-expand-click-area(@size: 10px){
+    position: relative;
+
+    &:before{
+        content: '';
+        position: absolute;
+        left: -@size;
+        top: -@size;
+        right: -@size;
+        bottom: -@size;
+    }
+}
