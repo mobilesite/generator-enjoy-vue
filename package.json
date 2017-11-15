@@ -1,8 +1,8 @@
 {
   "name": "generator-enjoy-vue",
   "version": "1.0.0",
-  "description": "An generator of an Vue.js APP",
-  "main": "index.js",
+  "description": "An generator of a Vue.js APP",
+  "main": "generators/app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,11 +13,22 @@
     "generator",
     "yeoman-generator"
   ],
-  "author": "paian<pai_an@qq.com>",
+  "author": "paian <pai_an@qq.com>",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.3.0",
+    "mkdirp": "^0.5.1",
     "yeoman-generator": "^2.0.1",
+    "yeoman-welcome": "^1.0.1",
     "yosay": "^2.0.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mobilesite/generator-enjoy-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mobilesite/generator-enjoy-vue/issues"
+  },
+  "homepage": "https://github.com/mobilesite/generator-enjoy-vue#readme"
 }

@@ -1,6 +1,5 @@
-# # 参考文档
-
-1、安装依赖：
+#  <%= projectName %>文档
+## 一、安装依赖：
 
 ``` bash
 npm i
@@ -9,7 +8,7 @@ npm i -g karma
 npm i -g webpack
 ```
 
-2、开发调试
+## 二、开发调试
 
 支持热加载的调试：
 
@@ -21,15 +20,15 @@ npm run dll-dev
 值得注意的是，这里需要进行hosts的配置：
 
 ```
-127.0.0.1 m.test.com
-127.0.0.1 static.test.com
+127.0.0.1 <%= projectHost %>
+127.0.0.1 <%= projectStaticHost %>
 ```
 
 访问地址：
 
-[http://m.test.com](http://m.test.com/) 或者 [https://m.test.com](https://m.test.com/)
+[http://<%= projectHost %>](http://<%= projectHost %>/) 或者 [https://<%= projectHost %>](https://<%= projectHost %>/)
 
-3、进行测试
+## 三、进行测试
 
 ```
 #run unit or e2e tests (ignore it, of no use now)
@@ -39,7 +38,7 @@ sudo run e2e tests
 npm test
 ```
 
-4、打包
+## 四、打包
 
 ```
 npm run dll-build --report
@@ -51,9 +50,9 @@ dll打包命令会将公共库打包到/dll/目录下，｀npm run dll-dev｀会
 
 虽然上述命令已经集成了将修改后的公共库配置打入项目各个页面的功能（详见package.json中，其中有 && sudo npm run dev 、 && sudo npm run build就是），但是需要注意的是/dll/目录只是一个过度性的目录，并非最终线上引用公共库打包文件的目录。
 
-二、Nginx的配置
+## 五、Nginx的配置
 
-通过Nginx配置两个地址，m.test.com指向html目录，static.test.com指向附属的静态资源（static目录）。
+通过Nginx配置两个地址，<%= projectHost %>指向html目录，<%= projectStaticHost %>指向附属的静态资源（static目录）。
 
 考虑到有的站点需要支持https，所以下面配了http和https两套服务器反向代理。
 
@@ -61,18 +60,17 @@ dll打包命令会将公共库打包到/dll/目录下，｀npm run dll-dev｀会
 # http server
 server {
     listen       80;
-    server_name  m.test.com;
+    server_name  <%= projectHost %>;
 
     location / {
-        root   /Users/paian/work/test/static/html/;
-        index  index.html;
+        root   <%= projectCwd %>/static/html/;
+        try_files $uri $uri/ /index.html;
     }
 }
 
 server {
     listen       80;
-    server_name  static.test.com;
-
+    server_name  <%= projectStaticHost %>;
 
     location / {
         add_header 'Access-Control-Allow-Methods' 'GET,OPTIONS,PUT,DELETE' always;
@@ -83,7 +81,7 @@ server {
             return 200;
         }
 
-        root   /Users/paian/work/test/static/html/;
+        root   <%= projectCwd %>/static/;
         index  index.html;
     }
 }
@@ -91,7 +89,7 @@ server {
 # https server
 server {
     listen       443 ssl;
-    server_name  m.test.com;
+    server_name  <%= projectHost %>;
 
     ssl_certificate      server.crt;
     ssl_certificate_key  server.key;
@@ -104,7 +102,7 @@ server {
         if ($request_method = OPTIONS) {
             return 200;
         }
-        root   /Users/paian/work/test/static/html/;
+        root   <%= projectCwd %>/static/html/;
         try_files $uri $uri/ /index.html;
         index  index.html index.htm;
     }
@@ -112,7 +110,7 @@ server {
 
 server {
     listen       443 ssl;
-    server_name  static.test.com;
+    server_name  <%= projectStaticHost %>;
 
     ssl_certificate      server.crt;
     ssl_certificate_key  server.key;
@@ -125,13 +123,8 @@ server {
         if ($request_method = OPTIONS) {
             return 200;
         }
-        root   /Users/paian/work/test/static/;
-        index  index.html index.htm;
+        root   <%= projectCwd %>/static/;
+        index  index.html;
     }
 }
 ```
-
-
-
-
-

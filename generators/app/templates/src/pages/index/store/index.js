@@ -18,7 +18,11 @@ const mutations = {
 
     [types.UPDATE_TOKEN](state, token) {
         state.token = token;
-    }
+    },
+
+    [types.UPDATE_COUNT](state, count) {
+        state.count = count;
+    }, //演示用
 };
 
 // 保存应用启动时的初始状态
@@ -26,7 +30,8 @@ const token = cookie.getItem(globalVars.default.tokenName)
 const state = {
     title: '',
     loading: false,
-    token: token ? token : ''
+    token: token ? token : '',
+    count: 0
 };
 
 export default new Vuex.Store({
