@@ -22,4 +22,4 @@ yo enjoy-rollup
 
 脚手架自带一些常用的工具方法（见utils目录下），你可以在vue实例中通过this.$utils.<util name>拿到这些方法。
 
-对于本脚手架所生成的项目的具体配置和运行等的说明，详见所生成项目的README.md文件，这里不再赘述。
+对于本脚手架所生成的项目的具体配置和运行等的说明，详见所生成项目的[README.md文件](https://github.com/mobilesite/generator-enjoy-vue/blob/master/generators/app/templates/_README.md)，这里不再赘述。
