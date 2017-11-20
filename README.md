@@ -16,7 +16,7 @@ npm i -g generator-enjoy-vue
 yo enjoy-rollup
 ```
 
-本内部集成了对directive、util、filter的打包，而且你无需手动import。
+本脚手架内部集成了对directive、util、filter的打包，而且你无需手动import。
 
 如果你需要增加一个filter，只需要在filters文件夹下添加一个以你所需要增加的filter命名的文件夹，并在内部创建filter.js文件即可。在组件内部，你可以通过this.$filter.<filter name>即可访问该filter。对于directive、util也做了同样的处理。使用方法以此类推。
 
