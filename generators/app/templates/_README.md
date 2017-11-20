@@ -1,4 +1,4 @@
-#  <%= projectName %>文档
+#  <%= projectName %>
 ## 一、安装依赖：
 
 ``` bash
