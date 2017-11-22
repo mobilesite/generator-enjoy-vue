@@ -1,24 +1,17 @@
 /**
- *
+ * 基础的DOM操作库
  * @author paian<pai_an@qq.com>
-
  * @since  17/10/17
  */
 
-import { evt } from '../evt/util';
-
 let ret = {};
 
-//事件绑定与解除绑定
-ret.bindEvent = evt.bindEvent;
-ret.removeEvent = evt.removeEvent;
-
+/**
+ * 简单的将HTML字符串转换成DOM对象
+ *
+ *  !! 注意，这是不太严谨的转换方法，因为像tr这样的标签是不能作为body的childNode的，所以当遇上这样的标签时，转换结果并不准确
+ */
 ret.toDOM = function (htmlStr) {
-    /**
-     * 简单的将HTML字符串转换成DOM对象
-     *
-     *  !! 注意，这是不太严谨的转换方法，因为像tr这样的标签是不能作为body的childNode的，所以当遇上这样的标签时，转换结果并不准确
-     */
     try {
         if (htmlStr.nodeType === 1) {
             return htmlStr;
@@ -49,6 +42,9 @@ ret.toDOM = function (htmlStr) {
     }
 };
 
+/**
+ * 将一个普通的DOM元素转成HTML片段
+ */
 ret.toHTML = function (el) {
     try {
         if (el.nodeType === 1) {
@@ -88,6 +84,11 @@ ret.after = function (destinationEl, el) {
     return destinationEl;
 };
 
+/**
+ * 往destinationEl之前插入一个el元素
+ * @param {DOM elment} destinationEl 
+ * @param {DOM elment} el 
+ */
 ret.before = function (destinationEl, el) {
     el = this.toDOM(el);
     destinationEl.parentNode.insertBefore(el, destinationEl);
@@ -95,6 +96,11 @@ ret.before = function (destinationEl, el) {
     return destinationEl;
 };
 
+/**
+ * 往destinationEl中append一个el元素
+ * @param {DOM elment} destinationEl 
+ * @param {DOM elment} el 
+ */
 ret.append = function (destinationEl, el) {
     el = this.toDOM(el);
     destinationEl.appendChild(el);
@@ -102,6 +108,11 @@ ret.append = function (destinationEl, el) {
     return destinationEl;
 };
 
+/**
+ * 替换元素
+ * @param {DOM elment} oldElement 
+ * @param {DOM elment} newElement 
+ */
 ret.replaceWith = function (oldElement, newElement) {
     newElement = this.toDOM(newElement);
     oldElement.parentNode.replaceChild(newElement, oldElement);
@@ -129,6 +140,10 @@ ret.remove = function (els) {
     })
 };
 
+/**
+ * 移除某个DOM元素
+ * @param {DOM elment} el 
+ */
 ret.removeElement = function (el) {
     let parent = el.parentNode;
 
@@ -137,16 +152,30 @@ ret.removeElement = function (el) {
     }
 };
 
+/**
+ * 创建一个匹配某个class名称的正则表达式
+ * @param {String} className 
+ */
 ret.classReg = function (className) {
     return new RegExp('(^|\\s+)' + className + '(\\s+|$)');
 };
 
+/**
+ * 判断是否有某个class
+ * @param {DOM elment} el 
+ * @param {String} className 
+ */
 ret.hasClass = function (el, className) {
     let reg = this.classReg(className);
 
     return reg.test(el.className);
 };
 
+/**
+ * 移除某个class
+ * @param {DOM elment} el 
+ * @param {String} className 
+ */
 ret.removeClass = function (el, className) {
     let reg = this.classReg(className);
 
@@ -157,6 +186,11 @@ ret.removeClass = function (el, className) {
     }
 };
 
+/**
+ * 添加某个class
+ * @param {DOM elment} el 
+ * @param {String} className 
+ */
 ret.addClass = function (el, className) {
     if (!this.hasClass(el, className)) {
         if (el.classList) {
@@ -180,10 +214,18 @@ ret.getNodeIndex = function (el) {
     return i;
 };
 
+/**
+ * 将DOM元素伪数组转成数组
+ * @param {DOM element} els 
+ */
 ret.toArray = function (els) {
     return Array.prototype.slice.call(els);
 };
 
+/**
+ * 去除字符串首尾空格
+ * @param {String} str 
+ */
 ret.trim = function (str) {
     var reg = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 
@@ -201,22 +243,41 @@ ret.trim = function (str) {
     ;
 };
 
+/**
+ * 检查一个DOM元素是否有某个id
+ * @param {DOM element} el 
+ * @param {String} id 
+ */
 ret.hasId = function (el, id) {
     id = this.trim(id);
     return el.id === id;
 };
 
+/**
+ * 检查一个DOM元素标签名是否是某个标签
+ * @param {DOM element} el 
+ * @param {String} tag 
+ */
 ret.hasTag = function (el, tag) {
     tag = this.trim(tag);
     return el.tagName === tag;
 };
 
+/**
+ * 获取一个DOM元素的父元素
+ * @param {DOM element} el 
+ */
 ret.parent = function (el) {
     let parent = el.parentNode;
 
     return parent && parent.nodeType !== 11 ? parent : null;
 };
 
+/**
+ * 获取一个DOM元素的祖先元素，该祖先元素必须符合parentsSelector这个选择器
+ * @param {DOM element} el 
+ * @param {String} parentsSelector
+ */
 ret.parents = function (el, parentsSelector) {
     let selector = this.trim(parentsSelector);
 
@@ -276,6 +337,9 @@ ret.deepCopy = (srcObj, cache = []) => {
     return destObj;
 };
 
+/**
+ * 获取当前容器的JS之中支持的是那种CSS样式的浏览器前缀，如果支持的是标准样式，则返回的是standard
+ */
 ret.getPrefix = () => {
     let styles = document.createElement('div').style;
 
@@ -288,7 +352,7 @@ ret.getPrefix = () => {
     };
 
     for(let i in transformNames){
-        if(styles[transformNames[i]] !== undefinded) {
+        if(styles[transformNames[i]] !== undefined) {
             return i === 'standard' ? '' : i ;
         }
     }
@@ -296,6 +360,10 @@ ret.getPrefix = () => {
     return false;
 };
 
+/**
+ * 给某个样式添加当前容器支持的前缀，返回的是一个JS中可用的样式属性名
+ * @param {String} style 
+ */
 ret.prefix = (style) => {
     let currentPrefix = ret.getPrefix();
 

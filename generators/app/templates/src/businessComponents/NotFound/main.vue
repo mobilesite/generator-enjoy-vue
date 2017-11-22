@@ -7,24 +7,24 @@
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            title: '404 page'
-        };
-    }
-};
+    export default {
+        data() {
+            return {
+                title: '404 page'
+            };
+        }
+    };
 </script>
 
 <style lang="less">
-@import "../../styles/enjoy-ui/main.less";
-.not-found {
-    .mixin-fullscreen();
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.not-found-inner{
-    margin-bottom: @enjoy-height-footer-nav;
-}
+    @import "../../styles/enjoy-ui/main.less";
+    .not-found {
+        .mixin-fullscreen();
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .not-found-inner{
+        margin-bottom: @enjoy-height-footer-nav;
+    }
 </style>

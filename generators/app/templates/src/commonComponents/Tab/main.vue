@@ -1,15 +1,14 @@
 <template>
-  <div class="tab" :class="className">
-    <div class="tab-menu" ref="listNavMenu">
-        <nav class="tab-menu-inner" :class="{ 'tab-menu-inner-fixed': listNavMenuFixed }" >
-            <slot name="tab-menu-item"></slot>
-        </nav>
+    <div class="enjoy-tab" :class="className">
+        <div class="enjoy-tab-menu" ref="listNavMenu">
+            <nav class="enjoy-tab-menu-inner" :class="{ 'enjoy-tab-menu-inner-fixed': listNavMenuFixed }" >
+                <slot name="enjoy-tab-menu-item"></slot>
+            </nav>
+        </div>
+        <div class="enjoy-tab-pane">
+            <slot name="enjoy-tab-pane-item"></slot>
+        </div>
     </div>
-
-    <div class="tab-pane">
-        <slot name="tab-pane-item"></slot>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -52,11 +51,11 @@
 <style lang="less">
     @import "../../styles/enjoy-ui/main.less";
 
-    .tab-menu{
+    .enjoy-tab-menu{
         position: relative;
         height: @enjoy-height-list-tab;
     }
-    .tab-menu-inner{
+    .enjoy-tab-menu-inner{
         display: flex;
         z-index: 999;
         background-color: @enjoy-color-list-tab-bg;
@@ -79,7 +78,7 @@
         }
     }
     .theme-test{
-        .tab-menu-inner{
+        .enjoy-tab-menu-inner{
             .active{
                 color: @enjoy-color-primary-test;
                 &:after{
@@ -88,13 +87,13 @@
             }
         }
     }
-    .tab-menu-inner-fixed{
+    .enjoy-tab-menu-inner-fixed{
         position: fixed;
         left: 0;
         right: 0;
         top: 0;
     }
-    .tab-menu-item{
+    .enjoy-tab-menu-item{
         position: relative;
         flex: 1;
         cursor: pointer;
@@ -107,11 +106,11 @@
         .mixin-set-tap-color();
     }
     
-    .tab-menu-text{
+    .enjoy-tab-menu-text{
         width: 100%;
         display: block;
     }
-    .tab-pane{
+    .enjoy-tab-pane{
         padding-bottom: 0;
     }
 </style>

@@ -9,11 +9,9 @@ import * as globalVars from '../../globalVars/index';
 export function setItem(name, value, days=30){
     let expiresTime = new Date();
     let pageDomain = globalVars.default.pageBaseURL.replace(/^https?:\/\//, '');
-    // let APIDomain = globalVars.default.APIBaseURL.replace(/^https?:\/\//, '');
 
     expiresTime.setTime(expiresTime.getTime() + days*24*60*60*1000);
     document.cookie = `${name}=${escape(value)}; expires=${expiresTime.toGMTString()}; domain=${pageDomain}`;
-    // document.cookie = `${name}=${escape(value)}; expires=${expiresTime.toGMTString()}; domain=${APIDomain}`;
 };
 
 /**

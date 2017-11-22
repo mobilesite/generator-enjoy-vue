@@ -1,7 +1,5 @@
 /**
- * @module libs/arrExt
  * @author paian<pai_an@qq.com>
-
  * @since  17/1/14
  */
 

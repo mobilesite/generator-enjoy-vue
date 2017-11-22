@@ -132,10 +132,6 @@ module.exports = class extends Generator {
               'We\'ll automatically create this folder for you.'
             );
             mkdirp(this.props.projectName);
-            console.log(111111111, this.destinationPath(this.props.projectName))
-            console.log(22222222, this.destinationRoot(this.destinationPath(this.props.projectName)))
-            console.log(33333333, this.templatePath('./'));
-            console.log(33333333, this.templatePath('./src'));
             this.destinationRoot(this.destinationPath(this.props.projectName));
         }
     }
@@ -185,6 +181,7 @@ module.exports = class extends Generator {
     //生成器即将结束
     end(){
         console.log('>>>end...');
+        console.log('Generator-enjoy-env has inited a project for you!')
     }
     
     _copy(from, to) {

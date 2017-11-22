@@ -6,6 +6,7 @@ npm i
 npm i -g cross-env
 npm i -g karma
 npm i -g webpack
+npm i -g anywhere
 ```
 
 ## 二、开发调试
@@ -22,6 +23,7 @@ npm run dll-dev
 ```
 127.0.0.1 <%= projectHost %>
 127.0.0.1 <%= projectStaticHost %>
+xxx.xxx.xxx.xxx <Host of the backend APIs>
 ```
 
 访问地址：
@@ -41,14 +43,10 @@ npm test
 ## 四、打包
 
 ```
-npm run dll-build --report
+npm run dll-build
 ```
 
-配置完公共库之后，需要执行一次上述dll打包命令。
-
-dll打包命令会将公共库打包到/dll/目录下，｀npm run dll-dev｀会打包到/dll/dev/下，而｀npm run dll-build｀会打包到/dll/prod/下，分别对应的是开发环境和生产环境。
-
-虽然上述命令已经集成了将修改后的公共库配置打入项目各个页面的功能（详见package.json中，其中有 && sudo npm run dev 、 && sudo npm run build就是），但是需要注意的是/dll/目录只是一个过度性的目录，并非最终线上引用公共库打包文件的目录。
+注：｀npm run dll-dev｀会打包到/dll/dev/下，而｀npm run dll-build｀会打包到/dll/prod/下，分别对应的是开发和build过程中文件。/dll/目录只是一个过度性的目录，并非最终线上引用公共库打包文件的目录。
 
 ## 五、Nginx的配置
 
@@ -128,3 +126,17 @@ server {
     }
 }
 ```
+
+### 六、常见问题处理
+
+#### 6.1 Error: EACCES: permission denied, open 'xxxxxxxxx'错误的处理
+
+执行｀npm run dll-dev｀或者｀npm run dll-build｀命令时，有时可能会遇到如下错误
+
+Error: EACCES: permission denied, open 'xxxxxxxxx'
+
+这时可能是打包时出现了文件权限问题，通常执行｀bash reset.sh｀命令即可，这个命令行里面会自动帮你重置相关文件的权限。
+
+#### 6.2 在热重载（hotreload）的情况下，添加一个文件或文件夹后，控制台报找不到相应的模块
+
+在热重载（hotreload）的情况下，添加一个文件或文件夹后，需要先结束｀npm run dll-dev｀的运行，再重新执行｀npm run dll-dev｀，以检测到文件的变更。这一点与vue-cli生成的项目是一样的。

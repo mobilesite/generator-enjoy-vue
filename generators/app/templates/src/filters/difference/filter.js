@@ -3,21 +3,20 @@
  *
  * @param {number} timestamp - 时间戳
  * @author paian<pai_an@qq.com>
-
  * @since  2017/7/12
  */
-export default function (timestamp) {
+export default function(timestamp) {
     const timeNow = parseInt(new Date().getTime() / 1000);
     const diff = timeNow - timestamp;
 
     if (diff <= 0) {
         return '1 second ago';
     } else {
-        const minute = parseInt(diff/60, 10);
-        const hour = parseInt(diff/3600, 10);
-        const day = parseInt(diff/86400, 10);
-        const month = parseInt(diff/2592000, 10);
-        const year = parseInt(diff/31536000, 10);
+        const minute = parseInt(diff / 60, 10);
+        const hour = parseInt(diff / 3600, 10);
+        const day = parseInt(diff / 86400, 10);
+        const month = parseInt(diff / 2592000, 10);
+        const year = parseInt(diff / 31536000, 10);
 
         if (diff < 60) {
             return diff + ' second' + (second > 1 ? 's' : '') + 'ago';

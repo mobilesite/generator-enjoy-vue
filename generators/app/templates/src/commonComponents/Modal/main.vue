@@ -1,5 +1,5 @@
 <template>
-    <div class="enjoy-modal" v-show="show">
+    <div class="enjoy-modal" :class="className" v-show="show">
         <div class="enjoy-modal-inner">
             <div class="enjoy-modal-header">
                 <slot name="enjoy-modal-header"></slot>
@@ -19,7 +19,12 @@
         name: 'Modal',
         props: {
             show: {
-                type: Boolean
+                type: Boolean,
+                default: false
+            },
+            className: {
+                type: String,
+                default: ''
             }
         }
     };
