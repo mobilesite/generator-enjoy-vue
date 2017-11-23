@@ -366,7 +366,7 @@ server {
 
 ## 五、常见问题处理
 
-#### 4.1 Error: EACCES: permission denied, open 'xxxxxxxxx'错误的处理
+#### 5.1 Error: EACCES: permission denied, open 'xxxxxxxxx'错误的处理
 
 执行`npm run dll-dev`或者`npm run dll-build`命令时，有时可能会遇到如下错误
 
@@ -374,6 +374,6 @@ Error: EACCES: permission denied, open 'xxxxxxxxx'
 
 这时可能是打包时出现了文件权限问题，通常执行`bash reset.sh`命令即可，这个命令行里面会自动帮你重置相关文件的权限。
 
-#### 4.2 在热重载（hotreload）的情况下，添加一个文件或文件夹后，控制台报找不到相应的模块
+#### 5.2 在热重载（hotreload）的情况下，添加一个文件或文件夹后，控制台报找不到相应的模块
 
 在热重载（hotreload）的情况下，添加一个文件或文件夹后，需要先结束`npm run dll-dev`的运行，再重新执行`npm run dll-dev`，以检测到文件的变更。这一点与vue-cli生成的项目是一样的。
