@@ -1,5 +1,5 @@
 <template>
-    <div class="loading" v-show="show">
+    <div class="enjoy-loading" v-show="show">
         <div></div>
         <div></div>
         <div></div>
@@ -27,7 +27,7 @@
 </script>
 
 <style lang="less">
-    .loading{
+    .enjoy-loading{
         padding: 10px 0;
         
         div {

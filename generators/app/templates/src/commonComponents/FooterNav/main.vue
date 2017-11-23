@@ -1,11 +1,11 @@
 <template>
-  <div class="footer-nav" :class="className">
-    <nav class="footer-nav-menu">
-        <slot name="footer-nav-menu-item"></slot>
-    </nav>
-    <div class="footer-nav-pane">
-        <slot name="footer-nav-pane-item"></slot>
+  <div class="enjoy-footer-nav" :class="className">
+    <div class="enjoy-footer-nav-pane">
+        <slot name="enjoy-footer-nav-pane-item"></slot>
     </div>
+    <nav class="enjoy-footer-nav-menu">
+        <slot name="enjoy-footer-nav-menu-item"></slot>
+    </nav>
   </div>
 </template>
 
@@ -35,19 +35,25 @@
 <style lang="less">
     @import "../../styles/enjoy-ui/main.less";
 
-    .footer-nav-menu {
+    .enjoy-footer-nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .enjoy-footer-nav-menu {
         display: flex;
         z-index: 999;
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        height: @enjoy-height-footer-nav;
+        width: 100%;
         background-color: @enjoy-color-footer-nav-bg;
         box-shadow: @enjoy-shadow-footer-nav;
         font-size: 11px;
         color: @enjoy-color-text-gray;
     }
-    .footer-nav-menu-item{
+    .enjoy-footer-nav-menu-item{
         position: relative;
         flex: 1;
         cursor: pointer;
@@ -55,7 +61,7 @@
         height: @enjoy-height-footer-nav;
 
         &.active{
-            .footer-nav-menu-text{
+            .enjoy-footer-nav-menu-text{
                 color: @enjoy-color-primary;
             }
         }
@@ -74,20 +80,20 @@
         }
     }
     .theme-test{
-        .footer-nav-menu-item{
+        .enjoy-footer-nav-menu-item{
             &.active{
-                .footer-nav-menu-text{
+                .enjoy-footer-nav-menu-text{
                     color: @enjoy-color-primary-test;
                 }
             }
         }
     }
-    .footer-nav-menu-icon{
+    .enjoy-footer-nav-menu-icon{
         margin-top: -2px;
         width: 100%;
         display: block;
     }
-    .footer-nav-menu-text{
+    .enjoy-footer-nav-menu-text{
         margin-top: -2px;
         width: 100%;
         display: block;
@@ -95,7 +101,9 @@
         color: @enjoy-color-text-dark;
     }
 
-    .footer-nav-pane{
-        padding-bottom: @enjoy-height-footer-nav;
+    .enjoy-footer-nav-pane{
+        flex: 1;
+        width: 100%;
+        overflow-y: auto;
     }
 </style>

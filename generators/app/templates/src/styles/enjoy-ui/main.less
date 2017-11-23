@@ -29,6 +29,13 @@
 //iconfont
 @import "./iconfont/main.less";
 
+html, body{
+    height: 100%;
+}
+body{
+    position: relative;
+}
+
 //icon
 .enjoy-icon-logo{
     position: absolute;
@@ -121,7 +128,7 @@
     background: @enjoy-color-modal-mask-bg;
 }
 .enjoy-modal-inner{
-    width: 72%;
+    width: @enjoy-width-modal-inner;
     position: relative;
     background-color: @enjoy-color-modal-bg;
     left: 50%;
@@ -133,8 +140,8 @@
     padding: 0 15px;
 }
 .enjoy-modal-body{
-    padding: 15px;
-    font-size: 13px;
+    padding: 15px 6%;
+    font-size: 14px;
     line-height: 16px;
     min-height: 32px;
 }
@@ -143,7 +150,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 15px;
+    padding: 0 6%;
     height: @enjoy-height-modal-footer;
     line-height: @enjoy-height-modal-footer;
     font-size: 17px;
@@ -153,8 +160,20 @@
     }
 }
 .enjoy-modal-btn{
+    position: relative;
     flex: 1;
     color: @enjoy-color-modal-btn;
+    &:before{
+        content: '';
+        .mixin-hairline-left();
+    }
+
+    &:first-child{
+        color: @enjoy-color-text-gray;
+        &:before{
+            display: none;
+        }
+    }
 }
 
 //toast
@@ -199,7 +218,7 @@
         color: @enjoy-color-primary-test;
     }
 
-    .footer-nav-menu-item:first-child {
+    .enjoy-footer-nav-menu-item:first-child {
         &.active {
             &:before {
                 color: @enjoy-color-primary-test;
@@ -207,7 +226,7 @@
         }
     }
 
-    .footer-nav-menu-item:last-child {
+    .enjoy-footer-nav-menu-item:last-child {
         &.active {
             &:before {
                 color: @enjoy-color-primary-test;

@@ -5,11 +5,11 @@
 </template>
 
 <script>
-    import Help from "@/businessComponents/Help/main.vue";
+    import Help from '@/businessComponents/Help/main.vue';
     import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 
     export default {
-        name: "Page",
+        name: 'Page',
         components: {
             Help,
         },
@@ -34,7 +34,7 @@
 </script>
 
 <style lang="less">
-    @import "../../styles/enjoy-ui/main.less";
+    @import '../../styles/enjoy-ui/main.less';
 
     .page {
         font-family: @enjoy-font-default;
