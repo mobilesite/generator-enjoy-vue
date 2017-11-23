@@ -34,7 +34,7 @@ Vue.js 2.5.2，同时集成了 vue-router（3.0.1）、vuex（3.0.1）、vue-axi
 
 然后运行如下命令安装本脚手架：
 
-``` bash
+```bash
 npm i -g generator-enjoy-vue
 ```
 
@@ -44,7 +44,7 @@ npm i -g generator-enjoy-vue
 
 ####（1）项目初始化
 
-```
+```bash
 yo enjoy-vue
 ```
 
@@ -218,18 +218,15 @@ ProjectName
 
 #### （1）安装依赖：
 
-``` bash
-npm i -g cross-env
-npm i -g karma
-npm i -g webpack
-npm i -g anywhere
+```bash
+npm i -g cross-env karma webpack anywhere
 ```
 
 #### （2）开发调试
 
 支持热加载的调试：
 
-```
+```bash
 anywhere -p 9090
 npm run dll-dev
 ```
@@ -246,10 +243,10 @@ xxx.xxx.xxx.xxx <Host of the backend APIs>      # 项目后端接口IP及域名
 
 [`http://<Host of your pages>`](`http://<Host of your pages>/`) 或者 [`https://<Host of your pages>`](`https://<Host of your pages>/`)
 
-上面形如<Host of your pages>的部分需替换成你自己项目的相应信息。
+上面形如`<Host of your pages>`的部分需替换成你自己项目的相应信息。
 #### （3）进行测试（若需要）
 
-```
+```bash
 #run unit or e2e tests (ignore it, of no use now)
 sudo npm run unit
 sudo run e2e tests
@@ -284,13 +281,13 @@ npm test
 ### 3.7 如何进行项目打包和打包后的预览？
 #### （1）执行打包
 
-先在｀anywhere -p 9090｀和｀npm run dll-dev｀这两个命令正在执行的终端中按｀control + c｀键终止它们的执行，然后执行如下命令：
+先在`anywhere -p 9090`和`npm run dll-dev`这两个命令正在执行的终端中按`control + c`键终止它们的执行，然后执行如下命令：
 
-```
+```bash
 npm run dll-build
 ```
 
-注：｀npm run dll-dev｀会打包到/dll/dev/下，而｀npm run dll-build｀会打包到/dll/prod/下，分别对应的是开发和build过程中文件。/dll/目录只是一个过度性的目录，并非最终线上引用公共库打包文件的目录。
+注：`npm run dll-dev`会打包到/dll/dev/下，而`npm run dll-build`会打包到/dll/prod/下，分别对应的是开发和build过程中文件。/dll/目录只是一个过度性的目录，并非最终线上引用公共库打包文件的目录。
 
 #### （2）Nginx的配置
 
@@ -353,22 +350,30 @@ server {
 }
 ```
 
-上述形如｀<Host of your static resources>｀内的部分需要替换成为你自己的相关信息。其中｀<Local root path of your project>｀是指你的本地项目根目录。
+上述形如`<Host of your static resources>`内的部分需要替换成为你自己的相关信息。其中`<Local root path of your project>`是指你的本地项目根目录。
 
 ### 3.8 字体图标的使用
 
-默认项目是集成了字体图标的，字体图标在高清屏幕下锐度更清晰，而且更方便变换颜色。如果你的项目中不想用它，可以在/src/styles/enjoy-ui/main.less中将｀@import "./iconfont/main.less";｀注释掉。
+默认项目是集成了字体图标的，字体图标在高清屏幕下锐度更清晰，而且更方便变换颜色。如果你的项目中不想用它，可以在/src/styles/enjoy-ui/main.less中将`@import "./iconfont/main.less";`注释掉。
 
-## 四、常见问题处理
+## 四、参与完善本项目
+
+可以fork出来一份，检出一个分支，添加完成后[Pull Request](https://www.zhihu.com/question/21682976)。
+
+对于通用性强的filter、directive、util 和 公用的Vue component都可以补充上去。目前这几个方面还比较欠缺。
+
+注意：组件内抛出的事件请以组件名加短连接线作为前缀（比如，我有一个Tab组件，那么其中抛出的事件就以tab-作为前缀）。
+
+## 五、常见问题处理
 
 #### 4.1 Error: EACCES: permission denied, open 'xxxxxxxxx'错误的处理
 
-执行｀npm run dll-dev｀或者｀npm run dll-build｀命令时，有时可能会遇到如下错误
+执行`npm run dll-dev`或者`npm run dll-build`命令时，有时可能会遇到如下错误
 
 Error: EACCES: permission denied, open 'xxxxxxxxx'
 
-这时可能是打包时出现了文件权限问题，通常执行｀bash reset.sh｀命令即可，这个命令行里面会自动帮你重置相关文件的权限。
+这时可能是打包时出现了文件权限问题，通常执行`bash reset.sh`命令即可，这个命令行里面会自动帮你重置相关文件的权限。
 
 #### 4.2 在热重载（hotreload）的情况下，添加一个文件或文件夹后，控制台报找不到相应的模块
 
-在热重载（hotreload）的情况下，添加一个文件或文件夹后，需要先结束｀npm run dll-dev｀的运行，再重新执行｀npm run dll-dev｀，以检测到文件的变更。这一点与vue-cli生成的项目是一样的。
+在热重载（hotreload）的情况下，添加一个文件或文件夹后，需要先结束`npm run dll-dev`的运行，再重新执行`npm run dll-dev`，以检测到文件的变更。这一点与vue-cli生成的项目是一样的。
