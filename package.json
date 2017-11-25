@@ -1,6 +1,6 @@
 {
     "name": "generator-enjoy-vue",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "An generator of a Vue.js APP",
     "main": "generators/app/index.js",
     "scripts": {
