@@ -68,14 +68,6 @@ server {
     server_name  <%= projectStaticHost %>;
 
     location / {
-        add_header 'Access-Control-Allow-Methods' 'GET,OPTIONS,PUT,DELETE' always;
-        add_header 'Access-Control-Allow-Credentials' 'true' always;
-        add_header 'Access-Control-Allow-Origin' '$http_origin' always;
-        add_header 'Access-Control-Allow-Headers'  'Authorization,DNT,User-Agent,Keep-Alive,Content-Type,accept,origin,X-Requested-With,platform' always;
-        if ($request_method = OPTIONS) {
-            return 200;
-        }
-
         root   <%= projectCwd %>/static/;
         index  index.html;
     }
@@ -90,13 +82,6 @@ server {
     ssl_certificate_key  server.key;
 
     location / {
-        add_header 'Access-Control-Allow-Methods' 'GET,OPTIONS,PUT,DELETE' always;
-        add_header 'Access-Control-Allow-Credentials' 'true' always;
-        add_header 'Access-Control-Allow-Origin' '$http_origin' always;
-        add_header 'Access-Control-Allow-Headers'  'Authorization,DNT,User-Agent,Keep-Alive,Content-Type,accept,origin,X-Requested-With,platform' always;
-        if ($request_method = OPTIONS) {
-            return 200;
-        }
         root   <%= projectCwd %>/static/html/;
         try_files $uri $uri/ /index.html;
         index  index.html index.htm;
@@ -111,13 +96,6 @@ server {
     ssl_certificate_key  server.key;
 
     location / {
-        add_header 'Access-Control-Allow-Methods' 'GET,OPTIONS,PUT,DELETE' always;
-        add_header 'Access-Control-Allow-Credentials' 'true' always;
-        add_header 'Access-Control-Allow-Origin' '$http_origin' always;
-        add_header 'Access-Control-Allow-Headers'  'Authorization,DNT,User-Agent,Keep-Alive,Content-Type,accept,origin,X-Requested-With,platform' always;
-        if ($request_method = OPTIONS) {
-            return 200;
-        }
         root   <%= projectCwd %>/static/;
         index  index.html;
     }
