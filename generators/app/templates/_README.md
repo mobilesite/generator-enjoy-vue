@@ -3,10 +3,7 @@
 
 ``` bash
 npm i
-npm i -g cross-env
-npm i -g karma
-npm i -g webpack
-npm i -g anywhere
+npm i -g cross-env karma anywhere
 ```
 
 ## 二、开发调试

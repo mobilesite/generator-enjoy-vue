@@ -2,35 +2,55 @@
 
 这是一个帮助你快速地创建一个Vue.js HTML5 APP，支持单页面和多页面应用开发，高度集成的脚手架，一个[Yeoman](http://yeoman.io/)生成器（generator）。
 
+## 一、特性
+
+### 1、高度集成，一条命令生成项目，可快速启动项目，直接进入业务逻辑的开发
+
 由于官方的vue-cli所初始化的项目是非常基础的，适合高度定制，但要想在此基础上快速开始业务开发，还需要做大量的二次开发和配置工作，不能满足业务上有时需要快速启动一个新项目的需求。正是基于此，有了本项目的诞生。
+
+像vue-router、vuex、vue-axios这些稍大一点的项目所需的标配性的工具，都已经自动集成在内。此外，我们还提供了一些常用的工具方法和组件（万一你不需要，也可以直接将它们删除）。
+
+### 2、支持单页应用，也支持多页应用
 
 通过本脚手架，你可以启动一个单页面应用，也可以启动一个多页面应用（注：多页面应用在部署时，在单页面应用的基础上，还需要在Nginx服务器上对路径进行单独的配置），也就是说是支持混合单页和多页开发的。
 
-另外，本脚手架内部集成了对filter（过滤器）、directive（指令）、util（工具方法）的自动打包，而且无需你手动去`import`你所添加的filter、directive、util。
+### 3、流程自动化，省去了大量的配置和反复`import`的麻烦
 
-## 一、技术选型
+本脚手架内部集成了对filter（过滤器）、directive（指令）、util（工具方法）的自动打包，而且无需你手动去`import`你所添加的filter、directive、util。例如，你无需在每个需要使用util中某个工具方法的组件中都去`import`一遍该工具方法，本脚手架已经自动帮你挂载到了vue实例上，通过`this.$utils.<util name>`即可拿到该方法，直接使用。
+
+当你采用多页面开发时，增加了一个页面之后，你也无需去做新增页面入口的配置，只需要在Pages中新增一个文件夹，遵循简单的命名规则放入你的文件即可。
+
+甚至在项目初始化时，还直接给你生成了项目README.md文档。
+
+## 二、技术选型
 
 本项目所采用的技术选型如下：
 
-（1）打包工具：
+### 1、打包工具：
 
 Webpack 2.3.3
 
-在打包方面，除了支持热加载之外，还采用了webpack.DllPlugin和happypack等技术对打包速度进行了优化。
+在打包方面，除了支持热加载(hot reload)之外，还采用了webpack.DllPlugin和happypack等技术对打包速度进行了优化。
 
-（2）项目框架：
+### 2、项目框架：
 
 Vue.js 2.5.2，同时集成了 vue-router（3.0.1）、vuex（3.0.1）、vue-axios（2.0.2）这些常用的Vue.js配件。
 
 由于基于Vue.js的开发方式在DOM操作上的量相比传统开发方式大为减少，同时也为了是项目更轻量，所以目前并没有自动集成Zepto.js这样的DOM操作库，如果你的项目中有需要用到，可以自己集成一个进去。
 
-（3）代码检查和代码风格
+### 3、代码检查和代码风格
 
 在代码检查上采用了Eslint工具，代码风格选择上的是以[standard](https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style)风格为蓝本做了简单的扩展。不过，考虑到项目开发的速度，默认并没有开启Eslint检查的功能。如果你的项目需要该功能，只需在.eslintignore中做简单的配置即可启用。
 
-## 二、安装
+## 三、安装
 
 首先，你需要确保安装过[node.js](https://nodejs.org/zh-cn/)和[Yeoman](http://yeoman.io/)。
+
+安装yeoman非常简单，只需执行命令：
+
+```bash
+npm install -g yo
+```
 
 然后运行如下命令安装本脚手架：
 
@@ -38,11 +58,11 @@ Vue.js 2.5.2，同时集成了 vue-router（3.0.1）、vuex（3.0.1）、vue-axi
 npm i -g generator-enjoy-vue
 ```
 
-## 三、使用
+## 四、使用
 
-### 3.1 如何用本脚手架工具初始化一个项目？
+### 4.1 如何用本脚手架工具初始化一个项目？
 
-####（1）项目初始化
+#### 1、项目初始化
 
 ```bash
 yo enjoy-vue
@@ -82,7 +102,7 @@ Host of the backend APIs 是后端接口域名。
 
 待终端中命令执行完成，控制台中没有报错，你将看到“Generator-enjoy-env has inited a project for you!”的提示，说明你已经完成了一个项目的初始化，同时安装好了项目的内部依赖。
 
-#### (2) 项目目录结构
+#### 2、项目目录结构
 
 项目的目录结构如下：
 
@@ -214,15 +234,15 @@ ProjectName
       └main.js
 ```
 
-### 3.2 项目初始化之后，如何让项目跑起来？
+### 4.2 项目初始化之后，如何让项目跑起来？
 
-#### （1）安装依赖：
+#### 1、安装依赖：
 
 ```bash
 npm i -g cross-env karma webpack anywhere
 ```
 
-#### （2）开发调试
+#### 2、开发调试
 
 支持热加载的调试：
 
@@ -244,7 +264,7 @@ xxx.xxx.xxx.xxx <Host of the backend APIs>      # 项目后端接口IP及域名
 [`http://<Host of your pages>`](`http://<Host of your pages>/`) 或者 [`https://<Host of your pages>`](`https://<Host of your pages>/`)
 
 上面形如`<Host of your pages>`的部分需替换成你自己项目的相应信息。
-#### （3）进行测试（若需要）
+#### 3、进行测试（若需要）
 
 ```bash
 #run unit or e2e tests (ignore it, of no use now)
@@ -254,13 +274,13 @@ sudo run e2e tests
 npm test
 ```
 
-### 3.3 如何添加一个页面？
+### 4.3 如何添加一个页面？
 
 这里指的添加一个页面，是指打包后多一个html文件，而不是一个view。如果你构建的是一个单页面应用，那么无需再添加页面，用默认的即可。只有当你想构建一个多页面应用的时候，才会需要添加页面。具体方法如下：
 
 在/src/pages目录下，新建一个以你的页面名称命名的文件夹，在其中新建main.js、page.html和Page.vue等文件，文件夹内的文件可以从/src/pages/index中拷贝过来。
 
-### 3.4 如何添加和删除一个filter（过滤器）、directive（指令）、util（工具方法）？
+### 4.4 如何添加和删除一个filter（过滤器）、directive（指令）、util（工具方法）？
 
 本脚手架内部集成了对filter（过滤器）、directive（指令）、util（工具方法，主要是各种常用的JavaScript工具函数）的自动打包，无需你手动去`import`你所添加的filter、directive、util，只需要遵循一定的命名以下命名规则添加到指定目录即可：
 
@@ -270,15 +290,15 @@ npm test
 
 添加和删除util（工具方法），在生成的项目的/src/utils目录下新建一个以该util的名称命名的文件夹，然后在里面新建一个util.js文件即可，util.js文件编写格式参见/src/utils这个目录所提供的现有util，如果你的新项目中并不需要某个util，你可以将该util的文件夹整个删除掉。
 
-### 3.5 如何使用这些filter（过滤器）、directive（指令）、util（工具方法）？
+### 4.5 如何使用这些filter（过滤器）、directive（指令）、util（工具方法）？
 
 这些filter（过滤器）、directive（指令）、util（工具方法）都挂载到了Vue和Vue的实例上，在组件中，中你可以通过`this.$filters.<filter name>`、`this.$directives.<directive name>`、`this.$utils.<util name>`获取到它们。
 
-### 3.6 如何添加和删除一个Vue组件？
+### 4.6 如何添加和删除一个Vue组件？
 
 项目中有两个目录是用来放置Vue组件的，/src/commonComponents 和 /src/businessComponents，前者用来放置可复用性较高的组件（通常是一些可以跨业务复用的组件），后者用来放置可复用性较低的组件（与业务有耦合的组件）。
 
-### 3.7 如何进行项目打包和打包后的预览？
+### 4.7 如何进行项目打包和打包后的预览？
 #### （1）执行打包
 
 先在`anywhere -p 9090`和`npm run dll-dev`这两个命令正在执行的终端中按`control + c`键终止它们的执行，然后执行如下命令：
@@ -352,11 +372,11 @@ server {
 
 上述形如`<Host of your static resources>`内的部分需要替换成为你自己的相关信息。其中`<Local root path of your project>`是指你的本地项目根目录。
 
-### 3.8 字体图标的使用
+### 4.8 字体图标的使用
 
 默认项目是集成了字体图标的，字体图标在高清屏幕下锐度更清晰，而且更方便变换颜色。如果你的项目中不想用它，可以在/src/styles/enjoy-ui/main.less中将`@import "./iconfont/main.less";`注释掉。
 
-## 四、参与完善本项目
+## 五、参与贡献，完善本项目
 
 可以fork出来一份，检出一个分支，添加完成后[Pull Request](https://www.zhihu.com/question/21682976)。
 
@@ -364,9 +384,9 @@ server {
 
 注意：组件内抛出的事件请以组件名加短连接线作为前缀（比如，我有一个Tab组件，那么其中抛出的事件就以tab-作为前缀）。
 
-## 五、常见问题处理
+## 六、常见问题处理
 
-#### 5.1 Error: EACCES: permission denied, open 'xxxxxxxxx'错误的处理
+#### 6.1 Error: EACCES: permission denied, open 'xxxxxxxxx'错误的处理
 
 执行`npm run dll-dev`或者`npm run dll-build`命令时，有时可能会遇到如下错误
 
@@ -374,6 +394,6 @@ Error: EACCES: permission denied, open 'xxxxxxxxx'
 
 这时可能是打包时出现了文件权限问题，通常执行`bash reset.sh`命令即可，这个命令行里面会自动帮你重置相关文件的权限。
 
-#### 5.2 在热重载（hotreload）的情况下，添加一个文件或文件夹后，控制台报找不到相应的模块
+#### 6.2 在热重载（hotreload）的情况下，添加一个文件或文件夹后，控制台报找不到相应的模块
 
 在热重载（hotreload）的情况下，添加一个文件或文件夹后，需要先结束`npm run dll-dev`的运行，再重新执行`npm run dll-dev`，以检测到文件的变更。这一点与vue-cli生成的项目是一样的。
