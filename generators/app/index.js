@@ -3,6 +3,7 @@ var path = require('path');
 var yosay = require('yosay');
 var chalk = require('chalk');
 var mkdirp = require('mkdirp');
+var os = require('os');
 
 module.exports = class extends Generator {
     // The name `constructor` is important here
@@ -112,6 +113,7 @@ module.exports = class extends Generator {
         return this.prompt(prompts).then(props => {
             // To access props later use this.props.someAnswer;
             props.projectCwd = process.cwd();
+            props.notWindows = os.platform() !== 'win32';
             this.props = props;
             // To access props later use this.props.someOption;
             done();

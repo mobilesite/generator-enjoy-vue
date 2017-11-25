@@ -10,7 +10,7 @@
     },
     "scripts": {
         "dll-dev":
-            "cross-env NODE_ENV=development webpack --config build/webpack.dll.conf.js --progress && sudo npm run dev",
+            "cross-env NODE_ENV=development webpack --config build/webpack.dll.conf.js --progress && <% if(notWindows){ %>sudo<% } %> npm run dev",
         "dll-build":
             "cross-env NODE_ENV=production webpack --config build/webpack.dll.conf.js --progress && npm run build",
         "dev": "node build/dev-server.js",
