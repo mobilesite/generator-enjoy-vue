@@ -40,7 +40,7 @@ Vue.js 2.5.2，同时集成了 vue-router（3.0.1）、vuex（3.0.1）、vue-axi
 
 ### 3、代码检查和代码风格
 
-在代码检查上采用了Eslint工具，代码风格选择上的是以[standard](https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style)风格为蓝本做了简单的扩展。不过，考虑到项目开发的速度，默认并没有开启Eslint检查的功能。如果你的项目需要该功能，只需在.eslintignore中做简单的配置即可启用。
+在代码检查上采用了Eslint 3.19.0工具，代码风格选择上的是以[standard](https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style)风格为蓝本做了简单的扩展。不过，考虑到项目开发的速度，默认并没有开启Eslint检查的功能。如果你的项目需要该功能，只需在.eslintignore中做简单的配置即可启用。
 
 ## 三、安装
 
