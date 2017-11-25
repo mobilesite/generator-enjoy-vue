@@ -46,7 +46,7 @@ Vue.js 2.5.2，同时集成了 vue-router（3.0.1）、vuex（3.0.1）、vue-axi
 
 首先，你需要确保安装过[node.js](https://nodejs.org/zh-cn/)和[Yeoman](http://yeoman.io/)。
 
-安装yeoman非常简单，只需执行命令：
+安装Yeoman非常简单，只需执行命令：
 
 ```bash
 npm install -g yo
