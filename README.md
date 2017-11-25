@@ -1,5 +1,7 @@
 # generator-enjoy-vue
 
+A efficient vue.js APP generator.
+
 这是一个帮助你快速地创建一个Vue.js HTML5 APP，支持单页面和多页面应用开发，高度集成的脚手架，一个[Yeoman](http://yeoman.io/)生成器（generator）。
 
 ## 一、特点
@@ -112,7 +114,7 @@ Host of the backend APIs 是后端接口域名。
 
 项目的目录结构如下：
 
-```
+```bash
 ProjectName
 ├─.babelrc
 ├─.editorconfig
@@ -259,7 +261,7 @@ npm run dll-dev
 
 值得注意的是，这里需要进行hosts的配置：
 
-```
+```bash
 127.0.0.1 <Host of your pages>                  # 项目前端页面域名
 127.0.0.1 <Host of your static resources>       # 项目静态资源域名
 xxx.xxx.xxx.xxx <Host of the backend APIs>      # 项目后端接口IP及域名
@@ -325,7 +327,7 @@ npm run dll-build
 
 下面是Nginx配置代码片段：
 
-```
+```bash
 # http server
 server {
     listen       80;
