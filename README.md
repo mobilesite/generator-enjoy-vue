@@ -78,25 +78,26 @@ yo enjoy-vue
 
 然后按照提示依次输入如下各项信息：
 
-    ? Project name (abc): test
+```bash
+? Project name (abc): test
 
-    ? Project version (1.0.0): 1.0.0
+? Project version (1.0.0): 1.0.0
 
-    ? Project description: A new project
+? Project description: A new project
 
-    ? Project Main file (src/pages/index/app.js): src/pages/index/app.js
+? Project Main file (src/pages/index/app.js): src/pages/index/app.js
 
-    ? Author Name(xxx): xxx
+? Author Name(xxx): xxx
 
-    ? Author Email(xxx@xxx.xxx): xxx@xxx.xxx
+? Author Email(xxx@xxx.xxx): xxx@xxx.xxx
 
-    ? License: MIT
+? License: MIT
 
-    ? Host of your pages: m.test.com
+? Host of your pages: m.test.com
 
-    ? Host of your static resources: static.test.com
+? Host of your static resources: static.test.com
 
-    ? Host of the backend APIs: api.test.com
+? Host of the backend APIs: api.test.com
 
 其中：
 
@@ -107,6 +108,7 @@ Host of your pages 是前端页面所用的域名；
 Host of your static resources 是静态资源的域名；
 
 Host of the backend APIs 是后端接口域名。
+```
 
 待终端中命令执行完成，控制台中没有报错，你将看到“Generator-enjoy-env has inited a project for you!”的提示，说明你已经完成了一个项目的初始化，同时安装好了项目的内部依赖。
 
